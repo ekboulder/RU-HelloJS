@@ -81,12 +81,45 @@
 
 <!-- Exercise js2 String Reporter -->
 
-var entry = prompt ('Please enter a word of your choice:')
+// var entry = prompt ('Please enter a word of your choice:')
 
-alert('you entered the word: ' + entry )
-alert('your word is made out of ' + entry.length + ' characters' )
-alert('the 3rd character in your word is ' + entry.charAt(2))
-alert('here is your word in all lower case: ' + entry.toLowerCase() )
-alert('here is your word in all UPPER CASE: ' + entry.toUpperCase() )
+// alert('you entered the word: ' + entry )
+// alert('your word is made out of ' + entry.length + ' characters' )
+// alert('the 3rd character in your word is ' + entry.charAt(2))
+// alert('here is your word in all lower case: ' + entry.toLowerCase() )
+// alert('here is your word in all UPPER CASE: ' + entry.toUpperCase() )
 
-alert('here are the 2nd, 3rd and 4th Characters of your word: ' + entry.substring(1,4))
+// alert('here are the 2nd, 3rd and 4th Characters of your word: ' + entry.substring(1,4))
+
+<!-- Exercise js3 String SimpleValidator -->
+
+
+
+var phoneNumber = prompt ( 'Please enter yout phone number using the following format: xxx-xxx-xxxx (where x is a number).')
+
+var validPhoneNumber = function (argument) {
+		var validity = 0
+		var message = ''
+		console.log ( 'you enetered ' + argument)
+		if ( ( argument.charAt(3) === '-' ) && ( argument.charAt(7) === '-' ) && (argument.length === 12) ){
+			for (i=0; i<argument.length; i++) {
+				(isNaN(argument[i])!= true) ? 	validity++ : 
+					( ( (i == 3) || (i == 7) ) && ( argument.charAt(i) === '-' ) ) ?	validity++ : 
+						message = 'false: Please use the following format xxx-xxx-xxxx (where x is a number).'
+			} 
+		} else {
+			message = 'false: Please use the following format xxx-xxx-xxxx (where x is a number).'
+			return message
+		}
+		
+		if (validity === 12) {
+			message = 'true: Thank you for entering your number in the correct format'
+			return message
+		} else {
+			return message
+		}
+}
+
+console.log( validPhoneNumber( phoneNumber ) )
+
+
